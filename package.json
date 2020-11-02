@@ -1,10 +1,16 @@
 {
-  "name": "nest-d",
+  "name": "nest-service",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "A restful API project based on nest.",
+  "author": "typeofNaN",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "keywords": [
+    "nest",
+    "nestjs",
+    "restful API",
+    "typescript"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
