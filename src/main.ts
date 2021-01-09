@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from '@app/app.module';
 import { isDevMode } from '@app/app.environment';
 import { APP_CONFIG } from '@app/app.config'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 const { log, warn, info } = console;
 const color = c => isDevMode ? c : '';
@@ -14,6 +15,15 @@ Object.assign(global.console, {
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  const options = new DocumentBuilder()
+    .setTitle('接口文档')
+    .setDescription('这是接口文档')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('swagger', app, document);
+
   await app.listen(APP_CONFIG.PORT);
 }
 bootstrap();
